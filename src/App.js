@@ -24,7 +24,7 @@ function AboutSettings() {
 
 function App() {
   return (
-    <Router>
+    <>
       <div className="App">
         <header className="container my-3">
           <h1>My App</h1>
@@ -57,7 +57,7 @@ function App() {
           </Switch>
         </main>
       </div>
-    </Router>
+    </>
   );
 }
 
