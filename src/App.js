@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import NoMatch from "./NoMatch";
 
 function Home() {
-  return <p>Home</p>;
+  return <h1>Welcome to the home page</h1>;
 }
-
 function About() {
-  return <p>About</p>;
+  return <h1>You are on the about page</h1>;
 }
-
+function Contact() {
+  return <h1>Please feel free to email us</h1>;
+}
 function AboutSettings() {
   return <p>About Settings</p>;
 }
@@ -48,6 +50,9 @@ function App() {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route>
+              <NoMatch />
             </Route>
           </Switch>
         </main>
