@@ -25,3 +25,6 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
+
+//https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis
+//ReactDOM.render vs ReactDOM.createRoot?

@@ -1,9 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import NoMatch from "./NoMatch";
+import UserProfile from "./UserProfile";
 
 function Home() {
   return <h1>Welcome to the home page</h1>;
+}
+function AboutSettings() {
+  return <h1>About Settings</h1>;
 }
 function About() {
   return <h1>You are on the about page</h1>;
@@ -11,13 +15,11 @@ function About() {
 function Contact() {
   return <h1>Please feel free to email us</h1>;
 }
-function AboutSettings() {
-  return <p>About Settings</p>;
-}
 
 // Route is like an `if` statement, matches and renders location inclusively, i.e. any route that has `/about`
+// `path` property describes the URL this route will handle
 // `exact` means exact={true} but looks like english
-// Link is like anchor+href tag+attribute
+// Link is like anchor+href tag+attribute, often points to a route
 // Switch renders the first child <Route> or <Redirect>,
 //  that matches and renders a route exclusively.
 //  For example, multiple `setting` routes, we might just want 1 setting route
@@ -34,7 +36,13 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
+                <Link to="/about-settings">About Settings</Link>
+              </li>
+              <li>
                 <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
@@ -45,11 +53,17 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/about/settings">
+            <Route path="/about-settings">
               <AboutSettings />
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/users/:userId/post/:postId">
+              <UserProfile />
             </Route>
             <Route>
               <NoMatch />
