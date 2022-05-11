@@ -47,7 +47,14 @@ function App() {
             </ul>
           </nav>
         </header>
-
+        {Array(10) //Create an array of 10 empty items [ <10 empty items> ]
+          .fill() //Fill the array items with undefined [undefined,undefined,...]
+          .map((ignoreValue, index) => index + 1) //Make a new array with map that has indices as values[1,2...10]
+          .map((id) => (//Create 10 `Link to` items on the page
+            <div key={id}>
+              <Link to={`/user/${id}`}>User {id}</Link>
+            </div>
+          ))}
         <main className="container">
           <Switch>
             <Route exact path="/">
@@ -62,7 +69,7 @@ function App() {
             <Route path="/contact">
               <Contact />
             </Route>
-            <Route path="/users/:userId/post/:postId">
+            <Route path="/user/:userId">
               <UserProfile />
             </Route>
             <Route>
