@@ -33,7 +33,6 @@ function UserProfile() {
 
   const deleteHandler = (event) => {
     // This will be successful but will not actually delete the user.
-    event.preventDefault();
     fetch(
       `https://jsonplaceholder.typicode.com/users/${userId}`,
       { method: "DELETE" } // the delete method tells the API to delete the user
