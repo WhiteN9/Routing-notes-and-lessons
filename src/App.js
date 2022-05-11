@@ -1,42 +1,34 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-import UserProfile from "./UserProfile.js";
+import UserProfile from "./UserProfile";
 
-function NewUser() {
-  return <p>Unable to create a new user</p>
-}
-function DefinitelyNoMatch() {
-  return <h1>404 Not Found</h1> 
+function Home() {
+  return <p>Home</p>;
 }
 
+// No need to change this component
 function App() {
   return (
-    // No need to add <Router>, it has been added to ./index.js
     <div className="App">
-      <Link to="/user/new">New User</Link>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
       {Array(10)
-        .fill()
-        .map((ignoredValue, index) => index + 1)
+        .fill(1)
+        .map((one, index) => index + one)
         .map((id) => (
           <div key={id}>
-            <Link to={`/user/${id}`} data-testid={`user-${id}`}>
-              User{id}
-            </Link>
+            <Link to={`/user/${id}`}>User {id}</Link>
           </div>
         ))}
-      <main>
-        <Switch>
-          <Route exact path="/user/:userId">
-            <UserProfile />
-          </Route>
-          <Route exact path="/user/new">
-            <UserProfile />
-          </Route>
-          <Route>
-            <DefinitelyNoMatch />
-          </Route>
-        </Switch>
-      </main>
+      <Switch>
+        <Route exact={true} path="/">
+          <Home />
+        </Route>
+        <Route path="/user/:userId">
+          <UserProfile />
+        </Route>
+      </Switch>
     </div>
   );
 }
